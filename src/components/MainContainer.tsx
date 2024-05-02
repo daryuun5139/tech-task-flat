@@ -1,5 +1,5 @@
 import Table from "./ui/Table";
-import axios from "axios";
+import { getData } from "@/lib/getData";
 
 type Props = {
   searchParams: { [key: string]: string | undefined };
@@ -19,22 +19,21 @@ const MainContainer = async ({ searchParams }: Props) => {
   const matterCode = searchParams.matter;
   const classCode = searchParams.class;
 
-  const response = await axios.get(
-    `https://opendata.resas-portal.go.jp/api/v1/regionalEmploy/analysis/portfolio?prefCode=${prefCode}&year=${yearCode}&matter=${matterCode}&class=${classCode}`,
-    {
-      headers: {
-        "X-API-KEY": process.env.RESAS_API,
-      },
-    }
-  );
-  // console.log(response.data.result.data);
-  const data: dataContent[] = response.data.result.data;
-
-  return (
-    <div id="mainContainer">
-      <Table data={data} />
-    </div>
-  );
+  if (!searchParams) {
+    const res = await getData();
+    return (
+      <div id="mainContainer">
+        <Table data={res.result.data} />
+      </div>
+    );
+  } else {
+    const res = await getData(prefCode, yearCode, matterCode, classCode);
+    return (
+      <div id="mainContainer">
+        <Table data={res.result.data} />
+      </div>
+    );
+  }
 };
 
 export default MainContainer;
