@@ -4,7 +4,7 @@
 import styles from "./style/RadioButton.module.css";
 import { classes } from "@/lib/optionData";
 import { useRecoilState } from "recoil";
-import { classCodeState, optionCodes, optionCodesState } from "@/lib/atoms/param-state";
+import { optionCodes, optionCodesState } from "@/lib/atoms/param-state";
 import { ChangeEvent, useEffect } from "react";
 
 type Props = {};
