@@ -36,10 +36,11 @@ const Table = (data: Props) => {
                 <th className={styles.rowlabel} scope="row">
                   {item.broadName}
                 </th>
+                {/* item.valueにnullがある場合があるので条件分岐を入れる */}
                 {item.value != null ? (
                   <td className={styles.data}> {item.value.toLocaleString()}人</td>
                 ) : (
-                  <td className={styles.data}> {null}人</td>
+                  <td className={styles.data}> {0}人</td>
                 )}
               </tr>
             );

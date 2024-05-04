@@ -4,23 +4,16 @@
 import { useRecoilValue } from "recoil";
 import RadioButton from "./ui/RadioButton";
 import SelectBox from "./ui/SelectBox";
-import {
-  classCodeState,
-  matterCodeState,
-  prefCodeState,
-  yearCodeState,
-} from "@/lib/atoms/param-state";
+import { optionCodes, optionCodesState } from "@/lib/atoms/param-state";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 type Props = {};
 
 const SideMenu = (props: Props) => {
-  //セレクトボックス、ラジオボタンのstateを１箇所に集約。
-  const prefCode = useRecoilValue<string>(prefCodeState);
-  const yearCode = useRecoilValue<string>(yearCodeState);
-  const matterCode = useRecoilValue<string>(matterCodeState);
-  const classCode = useRecoilValue<string>(classCodeState);
+  //各オプションのstateを取得。
+  const optionCodes = useRecoilValue<optionCodes>(optionCodesState);
+  const { prefCode, yearCode, matterCode, classCode } = optionCodes;
 
   //URLにクエリパラメータを追加する準備。
   const pathname: string = usePathname();

@@ -4,29 +4,27 @@
 import styles from "./style/SelectBox.module.css";
 import { years, prefectures, matters } from "@/lib/optionData";
 import { useRecoilState } from "recoil";
-import { prefCodeState, yearCodeState, matterCodeState } from "@/lib/atoms/param-state";
+import { optionCodesState, optionCodes } from "@/lib/atoms/param-state";
 import { ChangeEvent } from "react";
 
 type Props = {};
 
 const SelectBox = (props: Props) => {
-  const [prefParam, setPrefParam] = useRecoilState<string>(prefCodeState);
-  const [yearParam, setYearParam] = useRecoilState<string>(yearCodeState);
-  const [matterParam, setMatterParam] = useRecoilState<string>(matterCodeState);
+  const [optionCodes, setOptionCodes] = useRecoilState<optionCodes>(optionCodesState);
 
   //都道府県セレクトハンドラ
   const onChangePref = (event: ChangeEvent<HTMLSelectElement>) => {
-    setPrefParam(event.currentTarget.value);
+    setOptionCodes({ ...optionCodes, prefCode: event.currentTarget.value });
   };
 
   //年度セレクトハンドラ
   const onChangeYear = (event: ChangeEvent<HTMLSelectElement>) => {
-    setYearParam(event.currentTarget.value);
+    setOptionCodes({ ...optionCodes, yearCode: event.currentTarget.value });
   };
 
   //表示内容セレクトハンドラ
   const onChangeMatter = (event: ChangeEvent<HTMLSelectElement>) => {
-    setMatterParam(event.currentTarget.value);
+    setOptionCodes({ ...optionCodes, matterCode: event.currentTarget.value });
   };
 
   return (

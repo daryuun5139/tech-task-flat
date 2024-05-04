@@ -1,21 +1,13 @@
 import { atom } from "recoil";
 
-export const prefCodeState = atom<string>({
-  key: "prefCodeState",
-  default: "1",
-});
+export type optionCodes = {
+  prefCode: string;
+  yearCode: string;
+  matterCode: string;
+  classCode: string;
+};
 
-export const yearCodeState = atom<string>({
-  key: "yearCodeState",
-  default: "2012",
-});
-
-export const matterCodeState = atom<string>({
-  key: "matterCodeState",
-  default: "1",
-});
-
-export const classCodeState = atom<string>({
-  key: "classCodeState",
-  default: "1",
+export const optionCodesState = atom<optionCodes>({
+  key: "optionCodesState",
+  default: { prefCode: "1", yearCode: "2012", matterCode: "1", classCode: "1" },
 });

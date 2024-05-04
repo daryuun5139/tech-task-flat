@@ -1,11 +1,11 @@
 import axios from "axios";
 
-//デフォルトのbaseURLを設定
+//axiosにデフォルトのbaseURLを設定
 const apiUrl = axios.create({
   baseURL: "https://opendata.resas-portal.go.jp/api/v1/regionalEmploy/analysis/portfolio",
 });
 
-//RESAS_APIからfetchする関数
+//RESAS_APIから求人・求職者情報をfetchする関数
 export const getData = async (
   prefCode = "1",
   yearCode = "2012",

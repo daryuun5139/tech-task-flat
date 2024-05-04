@@ -54,17 +54,13 @@ h1 {
 
   #homeContainer {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
   }
 
   h1 {
-    padding: 0px 0px;
+    padding: 0px;
   }
 
   #firstWrapper {
-    display: flex;
     flex-direction: column;
   }
 
