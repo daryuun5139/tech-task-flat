@@ -1,9 +1,11 @@
 import axios from "axios";
 
+//デフォルトのbaseURLを設定
 const apiUrl = axios.create({
   baseURL: "https://opendata.resas-portal.go.jp/api/v1/regionalEmploy/analysis/portfolio",
 });
 
+//RESAS_APIからfetchする関数
 export const getData = async (
   prefCode = "1",
   yearCode = "2012",
@@ -12,6 +14,7 @@ export const getData = async (
 ) => {
   try {
     const response = await apiUrl.get(
+      //responseの型は？
       `?prefCode=${prefCode}&year=${yearCode}&matter=${matterCode}&class=${classCode}`,
       {
         headers: {
@@ -21,6 +24,7 @@ export const getData = async (
     );
     return response.data;
   } catch (e) {
+    //エラー処理はこれで十分？
     if (axios.isAxiosError(e) && e.response && e.response.status === 400) {
       console.log("400 Error!!");
     }

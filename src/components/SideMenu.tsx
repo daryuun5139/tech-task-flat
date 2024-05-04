@@ -1,3 +1,4 @@
+//画面左側（セレクトボックス、ラジオボタン）
 "use client";
 
 import { useRecoilValue } from "recoil";
@@ -15,13 +16,17 @@ import { useEffect } from "react";
 type Props = {};
 
 const SideMenu = (props: Props) => {
-  const prefCode = useRecoilValue(prefCodeState);
-  const yearCode = useRecoilValue(yearCodeState);
-  const matterCode = useRecoilValue(matterCodeState);
-  const classCode = useRecoilValue(classCodeState);
-  const pathname = usePathname();
+  //セレクトボックス、ラジオボタンのstateを１箇所に集約。
+  const prefCode = useRecoilValue<string>(prefCodeState);
+  const yearCode = useRecoilValue<string>(yearCodeState);
+  const matterCode = useRecoilValue<string>(matterCodeState);
+  const classCode = useRecoilValue<string>(classCodeState);
+
+  //URLにクエリパラメータを追加する準備。
+  const pathname: string = usePathname();
   const router = useRouter();
 
+  //セレクトボックス、ラジオボタンのstateが更新されたらクエリパラメータを変更。
   useEffect(() => {
     router.replace(
       `${pathname}/?pref=${prefCode}&year=${yearCode}&matter=${matterCode}&class=${classCode}`
@@ -29,8 +34,7 @@ const SideMenu = (props: Props) => {
   }, [prefCode, yearCode, matterCode, classCode]);
 
   return (
-    <div id="sideMenu" className="">
-      <h1>求人・求職者</h1>
+    <div id="sideMenu">
       <SelectBox />
       <RadioButton />
     </div>

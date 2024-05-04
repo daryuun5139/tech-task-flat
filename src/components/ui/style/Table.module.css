@@ -1,0 +1,69 @@
+.layout {
+  table-layout: fixed;
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 14px;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.headinglabel {
+  padding: 14px 10px;
+  font-weight: 300;
+}
+
+.headinglabel01 {
+  text-align: left;
+}
+
+.headinglabel02 {
+  text-align: center;
+}
+
+.items {
+  font-size: 14px;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.rowlabel {
+  padding: 14px 10px;
+  text-align: left;
+  font-weight: 300;
+}
+
+.data {
+  text-align: right;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 800px) {
+  /* 幅800px以下に適用 */
+  .layout {
+    width: 100%;
+  }
+
+  .data {
+    padding: 0 15px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  /* 幅400px以下に適用 */
+  .headinglabel {
+    padding-top: 20px;
+    padding-bottom: 4px;
+  }
+  .rowlabel {
+    padding: 10px 10px;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  /* 幅365以下に適用 */
+  .items {
+    font-size: 12px;
+  }
+}

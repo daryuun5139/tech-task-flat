@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 220px;
+  padding: 15px 3px;
+  margin: 0px 0px 10px 2px;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 36px;
+  right: 16px;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: 6px solid #6b6767;
+  border-bottom: 0;
+  pointer-events: none;
+}
+
+.label {
+  font-size: 14px;
+  color: #6b6767;
+  padding: 0px 5px;
+  position: absolute;
+  top: 4px;
+  left: 10px;
+  background-color: white;
+}
+
+.box {
+  padding: 14px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #d7d7d7;
+  cursor: pointer;
+  font-weight: 500;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.box:focus {
+  outline: 0;
+  border-color: black;
+  border-width: 2px;
+}
+
+@media screen and (max-width: 800px) {
+  /* 幅800px以下に適用 */
+  .selectWrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    width: fit-content;
+    padding: 12px 3px;
+    margin: 0px 0px 0px 2px;
+  }
+
+  .box {
+    padding: 14px 30px 14px 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  /* 幅400px以下に適用 */
+  .container {
+    padding-bottom: 5px;
+  }
+
+  .container::after {
+    top: 32px;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .box {
+    padding-bottom: 10px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  /* 幅365px以下に適用 */
+  .box {
+    font-size: 12px;
+  }
+}

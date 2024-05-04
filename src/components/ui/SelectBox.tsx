@@ -1,6 +1,7 @@
+//セレクトボックスUIコンポーネント
 "use client";
 
-import styles from "./SelectBox.module.css";
+import styles from "./style/SelectBox.module.css";
 import { years, prefectures, matters } from "@/lib/optionData";
 import { useRecoilState } from "recoil";
 import { prefCodeState, yearCodeState, matterCodeState } from "@/lib/atoms/param-state";
@@ -9,9 +10,9 @@ import { ChangeEvent } from "react";
 type Props = {};
 
 const SelectBox = (props: Props) => {
-  const [prefParam, setPrefParam] = useRecoilState(prefCodeState);
-  const [yearParam, setYearParam] = useRecoilState(yearCodeState);
-  const [matterParam, setMatterParam] = useRecoilState(matterCodeState);
+  const [prefParam, setPrefParam] = useRecoilState<string>(prefCodeState);
+  const [yearParam, setYearParam] = useRecoilState<string>(yearCodeState);
+  const [matterParam, setMatterParam] = useRecoilState<string>(matterCodeState);
 
   //都道府県セレクトハンドラ
   const onChangePref = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -29,7 +30,7 @@ const SelectBox = (props: Props) => {
   };
 
   return (
-    <>
+    <div className={styles.selectWrapper}>
       {/* 都道府県セレクトボックス-------------------------------------- */}
       <div className={styles.container}>
         <label className={styles.label} htmlFor="pref-select">
@@ -38,7 +39,7 @@ const SelectBox = (props: Props) => {
         <select className={styles.box} name="pref" id="pref-select" onChange={onChangePref}>
           {prefectures.map((item, index) => {
             return (
-              <option key={index} value={item.code}>
+              <option key={index} value={item.code} className={styles.option}>
                 {item.name}
               </option>
             );
@@ -75,7 +76,7 @@ const SelectBox = (props: Props) => {
           })}
         </select>
       </div>
-    </>
+    </div>
   );
 };
 

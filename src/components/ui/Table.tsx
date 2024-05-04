@@ -1,4 +1,5 @@
-import styles from "./Table.module.css";
+//テーブルUIコンポーネント
+import styles from "./style/Table.module.css";
 
 type dataContent = {
   broadCode: string;
@@ -19,10 +20,10 @@ const Table = (data: Props) => {
         {/* テーブル見出し------------------------------------------ */}
         <thead className={styles.heading}>
           <tr>
-            <th className={styles.headinglabel} scope="col">
+            <th className={`${styles.headinglabel} ${styles.headinglabel01}`} scope="col">
               職業分類名
             </th>
-            <th className={styles.headinglabel} scope="col">
+            <th className={`${styles.headinglabel} ${styles.headinglabel02}`} scope="col">
               求人・求職者数
             </th>
           </tr>
@@ -35,7 +36,11 @@ const Table = (data: Props) => {
                 <th className={styles.rowlabel} scope="row">
                   {item.broadName}
                 </th>
-                <td className={styles.data}> {item.value}人</td>
+                {item.value != null ? (
+                  <td className={styles.data}> {item.value.toLocaleString()}人</td>
+                ) : (
+                  <td className={styles.data}> {null}人</td>
+                )}
               </tr>
             );
           })}

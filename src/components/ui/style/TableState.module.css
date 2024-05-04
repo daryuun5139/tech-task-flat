@@ -1,0 +1,76 @@
+.tableState {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.box {
+  position: relative;
+  margin: 0 30px 0 0;
+}
+
+.label {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 300;
+  color: #6b6767;
+  top: -14px;
+  left: -10px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.year {
+  padding-top: 3px;
+}
+
+@media screen and (max-width: 900px) {
+  /* 幅900px以下に適用 */
+  .title {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  /* 幅800px以下に適用 */
+  .tableState {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  /* 幅400px以下に適用 */
+  .box {
+    margin: 0 20px 0 0;
+  }
+
+  .label {
+    top: -18px;
+    left: -10px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .year {
+    padding-top: 0px;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  /* 幅365以下に適用 */
+  .title {
+    font-size: 12px;
+  }
+}
