@@ -2,14 +2,17 @@
 "use client";
 
 import styles from "./style/SelectBox.module.css";
-import { years, prefectures, matters } from "@/lib/optionData";
+import { years, matters } from "@/lib/optionData";
 import { useRecoilState } from "recoil";
 import { optionCodesState, optionCodes } from "@/lib/atoms/param-state";
 import { ChangeEvent } from "react";
+import { prefList } from "@/lib/getData";
 
-type Props = {};
+type Props = {
+  prefList: prefList[];
+};
 
-const SelectBox = (props: Props) => {
+const SelectBox = ({ prefList }: Props) => {
   const [optionCodes, setOptionCodes] = useRecoilState<optionCodes>(optionCodesState);
 
   //都道府県セレクトハンドラ
@@ -35,10 +38,10 @@ const SelectBox = (props: Props) => {
           都道府県
         </label>
         <select className={styles.box} name="pref" id="pref-select" onChange={onChangePref}>
-          {prefectures.map((item, index) => {
+          {prefList.map((item, index) => {
             return (
-              <option key={index} value={item.code} className={styles.option}>
-                {item.name}
+              <option key={index} value={item.prefCode} className={styles.option}>
+                {item.prefName}
               </option>
             );
           })}

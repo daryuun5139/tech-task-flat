@@ -7,10 +7,13 @@ import SelectBox from "./ui/SelectBox";
 import { optionCodes, optionCodesState } from "@/lib/atoms/param-state";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { prefList } from "@/lib/getData";
 
-type Props = {};
+type Props = {
+  prefList: prefList[];
+};
 
-const SideMenu = (props: Props) => {
+const SideMenu = ({ prefList }: Props) => {
   //各オプションのstateを取得。
   const optionCodes = useRecoilValue<optionCodes>(optionCodesState);
   const { prefCode, yearCode, matterCode, classCode } = optionCodes;
@@ -28,7 +31,7 @@ const SideMenu = (props: Props) => {
 
   return (
     <div id="sideMenu">
-      <SelectBox />
+      <SelectBox prefList={prefList} />
       <RadioButton />
     </div>
   );
