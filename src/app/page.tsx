@@ -9,7 +9,7 @@ export default async function Home({
   searchParams: { [key: string]: string | undefined };
 }) {
   //RESAS_APIから都道府県一覧を取得
-  const prefList: prefList[] = await getPrefData();
+  const prefList: prefList = await getPrefData();
 
   return (
     <div id="homeContainer">

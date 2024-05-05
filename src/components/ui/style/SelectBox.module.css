@@ -49,11 +49,6 @@
 
 @media screen and (max-width: 800px) {
   /* 幅800px以下に適用 */
-  .selectWrapper {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   .container {
     width: fit-content;
     padding: 12px 3px;

@@ -1,9 +1,6 @@
 import axios from "axios";
 
-export type prefList = {
-  prefCode: number;
-  prefName: string;
-};
+export type prefList = { [key: string]: number | string }[];
 
 //axiosにデフォルトのbaseURLを設定
 const apiUrl = axios.create({

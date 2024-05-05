@@ -1,0 +1,12 @@
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 800px) {
+  /* 幅800px以下に適用 */
+  .selectWrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
