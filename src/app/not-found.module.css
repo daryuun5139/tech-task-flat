@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.text {
+  font-size: 16px;
+  text-align: center;
+}
+
+.link {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 10px;
+}
+
+.link:hover {
+  opacity: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  /* 幅800px以下に適用 */
+  .wrapper {
+    padding-top: 80px;
+  }
+}

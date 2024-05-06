@@ -1,30 +1,44 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { notFound } from "next/navigation";
 
 export type prefList = { [key: string]: number | string }[];
 
 //axiosにデフォルトのbaseURLを設定
-const apiUrl = axios.create({
+export const apiUrl = axios.create({
   baseURL: "https://opendata.resas-portal.go.jp/api/v1",
+  timeout: 5000,
 });
+
+//RESAS APIのエラー及びステータスコード
+//400 Bad Request: RESAS APIに必要なパラメータが正しく設定されていないときに発生
+//403 Forbidden: リクエストヘッダーにAPIキーが無いとき、指定のAPIキーが無効なときなどに発生
+//404 Not Found: RESAS APIに指定のURLに該当するAPIが無いときに発生
 
 //RESAS_APIから都道府県一覧をfetchする関数
 export const getPrefData = async () => {
   try {
-    const response = await apiUrl.get(
-      //responseの型は？
-      "/prefectures",
-      {
-        headers: {
-          "X-API-KEY": process.env.RESAS_API,
-        },
+    const response: AxiosResponse = await apiUrl.get("/prefectures", {
+      headers: {
+        "X-API-KEY": process.env.RESAS_API,
+      },
+    });
+    if (response.data.statusCode) {
+      console.log(response.data.message);
+      switch (response.data.statusCode) {
+        case "400":
+          throw new Error("400 error");
+        case "403":
+          throw new Error("403 error");
+        case "404":
+          throw new Error("404 error");
+        default:
+          throw new Error("something error");
       }
-    );
-    return response.data.result;
-  } catch (e) {
-    //エラー処理はこれで十分？
-    if (axios.isAxiosError(e) && e.response && e.response.status === 400) {
-      console.log("400 Error!!");
     }
+    return response.data.result;
+  } catch (err) {
+    console.log(err);
+    notFound();
   }
 };
 
@@ -36,20 +50,31 @@ export const getData = async (
   classCode = "1"
 ) => {
   try {
-    const response = await apiUrl.get(
-      //responseの型は？
+    const response: AxiosResponse = await apiUrl.get(
       `/regionalEmploy/analysis/portfolio?prefCode=${prefCode}&year=${yearCode}&matter=${matterCode}&class=${classCode}`,
+
       {
         headers: {
           "X-API-KEY": process.env.RESAS_API,
         },
       }
     );
-    return response.data;
-  } catch (e) {
-    //エラー処理はこれで十分？
-    if (axios.isAxiosError(e) && e.response && e.response.status === 400) {
-      console.log("400 Error!!");
+    if (response.data.statusCode) {
+      console.log(response.data.message);
+      switch (response.data.statusCode) {
+        case "400":
+          throw new Error("400 error");
+        case "403":
+          throw new Error("403 error");
+        case "404":
+          throw new Error("404 error");
+        default:
+          throw new Error("something error");
+      }
     }
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    notFound();
   }
 };
