@@ -36,24 +36,26 @@ const SelectBox = ({ optionList, name }: Props) => {
     setOptionCodes({ ...optionCodes, [stateKey]: event.currentTarget.value });
   };
 
-  //セレクトボックスの中身（”年度”とそれ以外で場合分け）
+  //セレクトボックスの中身を生成（”年度”とそれ以外で場合分け）
   const options = () => {
-    if (enName === "year") {
-      return optionList.map((item, index) => {
-        return (
-          <option key={index} value={item[`${enName}Name`]} className={styles.option}>
-            {item[`${enName}Name`]}
-          </option>
-        );
-      });
-    } else {
-      return optionList.map((item, index) => {
-        return (
-          <option key={index} value={item[`${enName}Code`]} className={styles.option}>
-            {item[`${enName}Name`]}
-          </option>
-        );
-      });
+    if (optionList) {
+      if (enName === "year") {
+        return optionList.map((item, index) => {
+          return (
+            <option key={index} value={item[`${enName}Name`]} className={styles.option}>
+              {item[`${enName}Name`]}
+            </option>
+          );
+        });
+      } else {
+        return optionList.map((item, index) => {
+          return (
+            <option key={index} value={item[`${enName}Code`]} className={styles.option}>
+              {item[`${enName}Name`]}
+            </option>
+          );
+        });
+      }
     }
   };
 

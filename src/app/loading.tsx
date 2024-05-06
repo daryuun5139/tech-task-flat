@@ -1,7 +1,10 @@
+import styles from "./style/loading.module.css";
+
 const Loading = () => {
   return (
-    <div>
-      <p>Loading</p>
+    <div className={styles.box}>
+      <span className={styles.loader}></span>
+      <p className={styles.text}>Loading Now</p>
     </div>
   );
 };

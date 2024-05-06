@@ -1,6 +1,5 @@
 import Image from "next/image";
-import styles from "./not-found.module.css";
-import Link from "next/link";
+import styles from "./style/not-found.module.css";
 
 export default function NotFound() {
   return (
@@ -10,11 +9,8 @@ export default function NotFound() {
       <p className={styles.text}>
         間違ったパラメータが設定されました。
         <br />
-        最初からやりなおしをお願いします。
+        リロードして最初からやりなおしをお願いします。
       </p>
-      <Link href="/" className={styles.link}>
-        Home
-      </Link>
     </div>
   );
 }

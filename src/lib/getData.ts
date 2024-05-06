@@ -1,8 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { notFound } from "next/navigation";
 
-export type prefList = { [key: string]: number | string }[];
-
 //axiosにデフォルトのbaseURLを設定
 export const apiUrl = axios.create({
   baseURL: "https://opendata.resas-portal.go.jp/api/v1",
@@ -14,34 +12,6 @@ export const apiUrl = axios.create({
 //403 Forbidden: リクエストヘッダーにAPIキーが無いとき、指定のAPIキーが無効なときなどに発生
 //404 Not Found: RESAS APIに指定のURLに該当するAPIが無いときに発生
 
-//RESAS_APIから都道府県一覧をfetchする関数
-export const getPrefData = async () => {
-  try {
-    const response: AxiosResponse = await apiUrl.get("/prefectures", {
-      headers: {
-        "X-API-KEY": process.env.RESAS_API,
-      },
-    });
-    if (response.data.statusCode) {
-      console.log(response.data.message);
-      switch (response.data.statusCode) {
-        case "400":
-          throw new Error("400 error");
-        case "403":
-          throw new Error("403 error");
-        case "404":
-          throw new Error("404 error");
-        default:
-          throw new Error("something error");
-      }
-    }
-    return response.data.result;
-  } catch (err) {
-    console.log(err);
-    notFound();
-  }
-};
-
 //RESAS_APIから求人・求職者情報をfetchする関数
 export const getData = async (
   prefCode = "1",
@@ -50,12 +20,13 @@ export const getData = async (
   classCode = "1"
 ) => {
   try {
+    // await sleep(5000);
     const response: AxiosResponse = await apiUrl.get(
       `/regionalEmploy/analysis/portfolio?prefCode=${prefCode}&year=${yearCode}&matter=${matterCode}&class=${classCode}`,
 
       {
         headers: {
-          "X-API-KEY": process.env.RESAS_API,
+          "X-API-KEY": process.env.NEXT_PUBLIC_RESAS_API,
         },
       }
     );
