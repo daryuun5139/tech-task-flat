@@ -38,7 +38,7 @@ const SideMenu = () => {
       try {
         const response: AxiosResponse = await apiUrl.get("/prefectures", {
           headers: {
-            "X-API-KEY": process.env.NEXT_PUBLIC_RESAS_API,
+            "X-API-KEY": process.env.NEXT_PUBLIC_RESAS_API01,
           },
         });
         if (response.data.statusCode) {

@@ -1,24 +1,34 @@
-
+## <u>技術課題</u>
 
 URL: https://tech-task-flat.vercel.app/
 GitHub: https://github.com/daryuun5139/tech-task-flat
 
-initial setting : 1h
-initial layout setting : 2h
-fetch API data & display data 10h（とりあえず動く状態）
-css modify : 2h
-responsive : 2h
+##### <仕様>
 
+<img src="public/readme01.jpg" alt="readme01" title="readme01" width="450" height="250">
 
+- セレクトボックス、ラジオボタンで選択した値がRecoilに格納される。（CC側）
+- SideMenuコンポーネントにて、Recoilに格納された値をURLにクエリパラメータとして付加する。（CC側)
+- Homeコンポーネントにて、クエリパラメータをsearchParams経由で取得する。（SC側)
+- クエリパラメータをpropsとしてMainContainerコンポーネントに渡す。（SC側)
+- 受け取ったクエリパラメータをもとにAPIからデータを取得し、データを表示する。（SC側)
+※SC：サーバーコンポーネント、CC：クライアントコンポーネント
 
+##### <所要時間>
 
+- 初期設定 : 1h
+- 初期レイアウト設定（CSSのみ） : 2h
+- とりあえず動いて表示される状態（fetch API data & display data）：10h
+- CSSの細部修正 : 2h
+- レスポンシブ対応 : 2h
+- その他リファクタリング
 
-参考サイト
-- [CSS モジュールについて](https://www.commte.co.jp/learn-nextjs/CSSModules)
-- [Axios](https://axios-http.com/ja/docs/intro)
+##### <懸念事項>
 
-
-
-- [【CSS】select（セレクトボックス）の矢印マークのカスタマイズ方法](https://webspe.net/select-tag-css/)
-- [selectタグの枠線に苦戦した話](https://qiita.com/NyaTube/items/9d1595c7f26f3886defb)
-- [HTML･CSS｜JavaScriptで簡単に数値を3桁カンマ編集](https://sssproduct.com/625/)
+- データフェッチ中、表データ部分にローディングが表示されない。
+- axiosでのエラーハンドリングの不足。
+- 初期表示で求人・求職者のデータが表示されているといっていいのか。
+- セレクトボックスで用いる都道府県一覧データをクライアント側で取得していいのか。
+- なぜuseEffect内だとasync/awaitが使えるのか。
+- データ更新でMainContainerコンポーネントが再レンダリングされると、他のコンポーネントも再レンダリングされる。
+- CCからSCへのURL経由でのパラメータ渡しは一般的か。

@@ -13,9 +13,7 @@ export default function Home({
     <div id="homeContainer">
       <h1>求人・求職者</h1>
       <div id="firstWrapper">
-        <Suspense fallback={<Loading />}>
-          <SideMenu />
-        </Suspense>
+        <SideMenu />
         <Suspense fallback={<Loading />}>
           <MainContainer searchParams={searchParams} />
         </Suspense>
