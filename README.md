@@ -1,7 +1,7 @@
 ## <u>技術課題</u>
 
-URL: https://tech-task-flat.vercel.app/
-GitHub: https://github.com/daryuun5139/tech-task-flat
+- URL: https://tech-task-flat.vercel.app/
+- GitHub: https://github.com/daryuun5139/tech-task-flat
 
 ##### <仕様>
 
@@ -23,11 +23,14 @@ GitHub: https://github.com/daryuun5139/tech-task-flat
 - レスポンシブ対応 : 2h
 - その他リファクタリング
 
-##### <懸念事項>
+##### <懸念事項（残っているタスク）>
 
-- データフェッチ中、表データ部分にローディングが表示されない。
-- axiosでのエラーハンドリングの不足。
-- 初期表示で求人・求職者のデータが表示されているといっていいのか。
+- データ更新中、表データ部分にローディングが表示されない。  
+(Promiseのpending状態をSuspenseに読み取ってほしい)
+- axiosでのエラーハンドリングの不足。  
+  (エラー処理に穴があるだろうし、axiosの書き方も勉強不足)
+- 初期表示で求人・求職者のデータが表示されているといっていいのか。  
+  (一応SSG （Static Site Generation）になっていると思う)
 - セレクトボックスで用いる都道府県一覧データをクライアント側で取得していいのか。
 - なぜuseEffect内だとasync/awaitが使えるのか。
 - データ更新でMainContainerコンポーネントが再レンダリングされると、他のコンポーネントも再レンダリングされる。

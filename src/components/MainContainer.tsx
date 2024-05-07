@@ -15,7 +15,7 @@ const MainContainer = async ({ searchParams }: Props) => {
 
   //レンダリング前でクエリパラメータ未設定の場合は、初期値prefCode="1",yearCode="2012",matterCode="1",classCode="1"でfetch。
   if (!searchParams) {
-    const res = await getData(); //resの型は？
+    const res = await getData();
 
     return (
       <>
@@ -33,7 +33,7 @@ const MainContainer = async ({ searchParams }: Props) => {
     );
   } else {
     //レンダリング後は、設定されたクエリパラメータででfetch。
-    const res = await getData(prefCode, yearCode, matterCode, classCode); //resの型は？
+    const res = await getData(prefCode, yearCode, matterCode, classCode);
     return (
       <>
         {res ? (

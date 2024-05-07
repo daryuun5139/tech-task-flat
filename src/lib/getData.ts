@@ -12,8 +12,6 @@ export const apiUrl = axios.create({
 //403 Forbidden: リクエストヘッダーにAPIキーが無いとき、指定のAPIキーが無効なときなどに発生
 //404 Not Found: RESAS APIに指定のURLに該当するAPIが無いときに発生
 
-// const sleep = (time: number) => new Promise((resolve) => setTimeout(resolve, time));
-
 //RESAS_APIから求人・求職者情報をfetchする関数
 export const getData = async (
   prefCode = "1",
@@ -22,7 +20,6 @@ export const getData = async (
   classCode = "1"
 ) => {
   try {
-    // await sleep(5000);
     const response: AxiosResponse = await apiUrl.get(
       `/regionalEmploy/analysis/portfolio?prefCode=${prefCode}&year=${yearCode}&matter=${matterCode}&class=${classCode}`,
 

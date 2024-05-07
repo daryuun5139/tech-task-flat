@@ -7,7 +7,7 @@ import RadioButton from "./ui/RadioButton";
 import SelectBox from "./ui/SelectBox";
 import { optionCodes, optionCodesState } from "@/lib/atoms/param-state";
 import { notFound, usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { yearList, matterList } from "@/lib/optionData";
 import { apiUrl } from "@/lib/getData";
 import { AxiosResponse } from "axios";
@@ -64,13 +64,21 @@ const SideMenu = () => {
     getPrefData();
   }, []);
 
-  return (
-    <div id="sideMenu">
-      <div className={styles.selectWrapper}>
+  //セレクトボックスの中身prefList, yearList, matterListに変更がなければ無駄にレンダリングさせない。
+  const preSelectBox = useMemo(
+    () => (
+      <>
         <SelectBox optionList={prefList!} name="都道府県" />
         <SelectBox optionList={yearList} name="年度" />
         <SelectBox optionList={matterList} name="表示内容" />
-      </div>
+      </>
+    ),
+    [prefList, yearList, matterList]
+  );
+
+  return (
+    <div id="sideMenu">
+      <div className={styles.selectWrapper}>{preSelectBox}</div>
       <RadioButton />
     </div>
   );
